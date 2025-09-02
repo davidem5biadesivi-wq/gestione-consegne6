@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ufficio</title>
+</head>
+<body>
+    <h2>Benvenuto Ufficio</h2>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <h3>Richiedi lavorazione</h3>
+    <form method="post" action="{{ url_for('aggiungi_lavorazione') }}">
+        <input type="text" name="descrizione" placeholder="Descrizione" required><br>
+        <select name="macchina" required>
+            <option value="tornio">Tornio</option>
+            <option value="piana">Piana</option>
+            <option value="rotativa">Rotativa</option>
+            <option value="taglierina">Taglierina</option>
+        </select><br>
+        <input type="date" name="data_richiesta" required><br>
+        <button type="submit">Invia richiesta</button>
+    </form>
+    <h3>Lavorazioni</h3>
+    <ul>
+    {% for l in lavorazioni %}
+        <li>{{ l['descrizione'] }} - {{ l['macchina'] }} - {{ l['data_richiesta'] }}</li>
+    {% endfor %}
+    </ul>
+    <h3>Utenti</h3>
+    <ul>
+    {% for u in utenti %}
+        <li>{{ u['username'] }} - {{ u['role'] }} - {{ u['macchina'] }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

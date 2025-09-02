@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Operatore</title>
+</head>
+<body>
+    <h2>Benvenuto Operatore - Macchina: {{ macchina }}</h2>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <h3>Lavorazioni</h3>
+    <ul>
+    {% for l in lavorazioni %}
+        <li>{{ l['descrizione'] }} - {{ l['data_richiesta'] }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
